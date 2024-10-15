@@ -1,6 +1,5 @@
 import * as dotenv from "dotenv";
 import { resolve } from "path";
-import "express-async-errors";
 const envPath = resolve("./src/.env");
 dotenv.config({ path: envPath });
 import App from "./app";

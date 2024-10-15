@@ -28,7 +28,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = __importStar(require("dotenv"));
 const path_1 = require("path");
-require("express-async-errors");
 const envPath = (0, path_1.resolve)("./src/.env");
 dotenv.config({ path: envPath });
 const app_1 = __importDefault(require("./app"));
