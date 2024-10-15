@@ -16,4 +16,3 @@ const comparePass = (clientpass, dbpass) => {
     return validate;
 };
 exports.comparePass = comparePass;
-//# sourceMappingURL=passowrd.js.map

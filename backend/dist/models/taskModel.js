@@ -16,4 +16,3 @@ const task = new mongoose_1.default.Schema({
     },
 });
 exports.default = task;
-//# sourceMappingURL=taskModel.js.map

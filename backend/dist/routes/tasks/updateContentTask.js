@@ -40,4 +40,3 @@ class UpdateContentTask {
     }
 }
 exports.default = UpdateContentTask;
-//# sourceMappingURL=updateContentTask.js.map

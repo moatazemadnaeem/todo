@@ -13,4 +13,3 @@ const handleError = (err, req, res, next) => {
     }
 };
 exports.handleError = handleError;
-//# sourceMappingURL=handleError.js.map

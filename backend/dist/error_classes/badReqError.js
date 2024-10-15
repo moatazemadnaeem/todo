@@ -14,4 +14,3 @@ class BadReqErr extends customError_1.CustomError {
     }
 }
 exports.BadReqErr = BadReqErr;
-//# sourceMappingURL=badReqError.js.map

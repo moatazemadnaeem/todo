@@ -7,4 +7,3 @@ const paginateArray = (array, page) => {
     return array.slice(start, end);
 };
 exports.paginateArray = paginateArray;
-//# sourceMappingURL=paginate.js.map

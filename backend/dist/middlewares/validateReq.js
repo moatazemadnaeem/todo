@@ -11,4 +11,3 @@ const validatereq = (req, res, next) => {
     next();
 };
 exports.validatereq = validatereq;
-//# sourceMappingURL=validateReq.js.map

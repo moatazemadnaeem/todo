@@ -32,4 +32,3 @@ class StatusFilterTask {
     }
 }
 exports.default = StatusFilterTask;
-//# sourceMappingURL=statusFilterTask.js.map

@@ -20,4 +20,3 @@ class DeleteTask {
     }
 }
 exports.default = DeleteTask;
-//# sourceMappingURL=deleteTask.js.map
