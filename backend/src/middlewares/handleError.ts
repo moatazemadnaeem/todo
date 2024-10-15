@@ -9,8 +9,6 @@ export const handleError = (
   if (err instanceof CustomError) {
     res.status(err.statusCode).send(err.summary());
   } else {
-    res
-      .status(400)
-      .send([{ message: "Something went wrong please try again!" }]);
+    res.status(400).send([{ message: err.message }]);
   }
 };

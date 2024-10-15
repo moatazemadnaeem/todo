@@ -13,7 +13,6 @@ export const signInUser = async (requestBody: UserSignInInter) => {
         ...requestBody,
       }
     );
-
     return data;
   } catch (error: any) {
     throw (

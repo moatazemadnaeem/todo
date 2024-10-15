@@ -29,6 +29,7 @@ AxiosInstance.interceptors.request.use(
         config.headers["authentication"] = `${token}`;
       }
     }
+
     return config;
   },
   () => {
