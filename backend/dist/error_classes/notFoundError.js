@@ -14,3 +14,4 @@ class NotFound extends customError_1.CustomError {
     }
 }
 exports.NotFound = NotFound;
+//# sourceMappingURL=notFoundError.js.map

@@ -34,3 +34,4 @@ class FullTextTask {
     }
 }
 exports.default = FullTextTask;
+//# sourceMappingURL=fullTextSearch.js.map

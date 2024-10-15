@@ -13,3 +13,4 @@ class SignOut {
     }
 }
 exports.default = SignOut;
+//# sourceMappingURL=signoutUser.js.map

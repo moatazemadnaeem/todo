@@ -14,3 +14,4 @@ class NotAuth extends customError_1.CustomError {
     }
 }
 exports.NotAuth = NotAuth;
+//# sourceMappingURL=notAuthError.js.map

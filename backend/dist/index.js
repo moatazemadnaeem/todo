@@ -56,3 +56,4 @@ new app_1.default([
     new fullTextSearch_1.default(),
     new statusFilterTask_1.default(),
 ], parseInt(process.env.PORT));
+//# sourceMappingURL=index.js.map
