@@ -35,7 +35,13 @@ class App {
     });
   }
   private initializeMiddleware(): void {
-    this.express.use(cors());
+    this.express.use(
+      cors({
+        origin: "*",
+        credentials: true,
+        methods: ["GET", "POST", "DELETE", "PATCH", "PUT"],
+      })
+    );
     this.express.use(express.json());
     this.express.use(
       cookieSession({
@@ -45,6 +51,9 @@ class App {
     );
   }
   private initializeRouters(routers: __Router[]): void {
+    this.express.get("/", (req, res) => {
+      res.send("HI");
+    });
     routers.forEach((routerInstance: __Router) => {
       this.express.use("/api/v1", routerInstance.router);
     });
