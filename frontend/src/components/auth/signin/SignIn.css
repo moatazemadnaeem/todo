@@ -1,0 +1,33 @@
+.signin {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.signin .ant-form-item-label label {
+  color: var(--penColor);
+  font-weight: bold;
+}
+.signin .name,
+.email,
+.password,
+.button,
+.link {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 0.5rem;
+}
+.signin button {
+  font-weight: bold;
+  width: 100%;
+}
+.link a {
+  color: var(--secondaryColor);
+  font-weight: bold;
+}
+.link span {
+  color: var(--penColor);
+  font-weight: bold;
+}
