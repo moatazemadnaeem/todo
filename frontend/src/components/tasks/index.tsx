@@ -30,7 +30,7 @@ const Todo = () => {
       <Button
         onClick={() => {
           dispatch(logout_user());
-          redirect("/");
+          window.location.reload();
         }}
         className="signout__user"
       >
