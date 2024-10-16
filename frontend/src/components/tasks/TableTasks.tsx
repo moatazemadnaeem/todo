@@ -131,9 +131,17 @@ const TableTasks = () => {
         className="table__tasks"
         columns={columns}
         dataSource={tasks}
-        rowKey={(task: TaskInter) => task._id} // Use the id as the unique key
+        rowKey={(task: TaskInter) => task._id}
         pagination={paginationConfig}
-        locale={{ emptyText: loadingTasks && <Spin /> }}
+        locale={{
+          emptyText: loadingTasks ? (
+            <Spin />
+          ) : (
+            <span className="no__data__tasks">
+              No Data Add Tasks To Start See Them!
+            </span>
+          ),
+        }}
       />
       <DeleteModal
         isModalVisible={isModalVisible}

@@ -22,7 +22,7 @@ export function useAuth() {
           "users/current_user"
         );
         if (data) {
-          dispatch(success_get_user());
+          dispatch(success_get_user({ name: data.name, email: data.email }));
         }
       } catch (error: any) {
         dispatch(

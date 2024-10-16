@@ -7,17 +7,22 @@ import { UserSignInInter } from "../../../types/users.types";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const [loading, setLoading] = useState<boolean>(false);
   const handleSignInApi = async (values: UserSignInInter) => {
     try {
+      setLoading(true);
       const data = await signInApi(values, dispatch);
       if (data) {
         return navigate("/tasks");
       }
     } catch (error: any) {
       message.error(error);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -57,7 +62,7 @@ const SignIn = () => {
         <Link to="/signup">SignUp</Link>
       </Form.Item>
       <Form.Item className="button">
-        <Button type="primary" htmlType="submit">
+        <Button loading={loading} type="primary" htmlType="submit">
           Sign in
         </Button>
       </Form.Item>

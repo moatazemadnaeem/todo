@@ -10,17 +10,22 @@ import { UserSignUpInter } from "../../../types/users.types";
 import { signUpUserApi } from "../../../api/users";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store";
+import { useState } from "react";
 const SignUp = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const handleSignUpApi = async (values: UserSignUpInter) => {
     try {
+      setLoading(true);
       const data = await signUpUserApi(values, dispatch);
       if (data && data.status) {
         return navigate("/");
       }
     } catch (error: any) {
       message.error(error);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -73,7 +78,7 @@ const SignUp = () => {
         <Link to="/">SignIn</Link>
       </Form.Item>
       <Form.Item className="button">
-        <Button type="primary" htmlType="submit">
+        <Button loading={loading} type="primary" htmlType="submit">
           Sign up
         </Button>
       </Form.Item>

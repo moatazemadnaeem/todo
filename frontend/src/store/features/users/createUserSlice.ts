@@ -1,5 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { UserInter, UserSignInReturnInter } from "../../../types/users.types";
+import {
+  UserInter,
+  UserSignInReturnInter,
+  UserSignInInter,
+} from "../../../types/users.types";
 
 const initialState: UserInter = {
   loading: false,
@@ -16,9 +20,14 @@ const userSlice = createSlice({
     req_user: (state) => {
       state.loading = true;
     },
-    success_get_user: (state) => {
+    success_get_user: (state, action: PayloadAction<UserSignInInter>) => {
       state.loading = false;
       state.status = true;
+      state.user = {
+        name: action.payload.name,
+        email: action.payload.email,
+      };
+      state.token = sessionStorage.getItem("jwt");
     },
     success_signin: (state, action: PayloadAction<UserSignInReturnInter>) => {
       state.loading = false;

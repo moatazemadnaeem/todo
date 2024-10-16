@@ -1,8 +1,14 @@
 .tasks__container {
   height: 100vh;
+  flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.welcome__todo {
+  color: var(--penColor);
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 .tasks {
   background-color: var(--WT);
@@ -57,11 +63,25 @@
   padding: 8px;
   cursor: pointer;
 }
-
+.signout__user {
+  margin-top: 1rem;
+  background: var(--goldColor);
+  color: var(--penColorDark);
+  border: none;
+  font-weight: bold;
+}
+.signout__user:hover {
+  background: none !important;
+  border: 1px solid var(--goldColor) !important;
+  color: var(--goldColor) !important;
+}
 .autocomplete-item:hover {
   background-color: #f5f5f5;
 }
-
+.no__data__tasks {
+  color: var(--penColorDark);
+  font-weight: bold;
+}
 @media (max-width: 480px) {
   .tasks {
     padding: 1rem;
