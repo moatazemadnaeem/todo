@@ -3,11 +3,14 @@ import { useDispatch } from "react-redux";
 import "./tasks.styles.css";
 import { AppDispatch } from "../../store";
 import { createTasksApi } from "../../api/tasks";
+import { useState } from "react";
 const FormInput = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch<AppDispatch>();
+  const [loading, setLoading] = useState<boolean>(false);
   const onFinish = async (values: { content: string }) => {
     try {
+      setLoading(true);
       await createTasksApi(
         {
           content: values.content,
@@ -17,6 +20,8 @@ const FormInput = () => {
       form.resetFields();
     } catch (error: any) {
       message.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -25,7 +30,12 @@ const FormInput = () => {
       <Form.Item className="add__input__task" name="content">
         <Input placeholder="Enter your task here" />
       </Form.Item>
-      <Button className="btn__task" type="primary" htmlType="submit">
+      <Button
+        loading={loading}
+        className="btn__task"
+        type="primary"
+        htmlType="submit"
+      >
         Add Task
       </Button>
     </Form>

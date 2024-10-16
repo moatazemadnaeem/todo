@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .welcome__todo {
   color: var(--penColor);
   font-weight: bold;
@@ -22,6 +23,7 @@
   justify-content: space-between;
   margin-bottom: 1rem;
 }
+
 .input__task {
   display: flex;
   align-items: center;
