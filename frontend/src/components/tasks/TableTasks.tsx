@@ -1,4 +1,4 @@
-import { Table, Spin } from "antd";
+import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { StatusEnum, TaskInter } from "../../types/tasks.types";
@@ -27,10 +27,10 @@ const TableTasks = () => {
   const loadingTasks = useSelector<RootState>(
     (state) => state.tasks.loading
   ) as boolean;
-  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [selectedRow, setSelectedRow] = useState<string | null>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [selectedRecord, setSelectedRecord] = useState<TaskInter | null>(null);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
 
   const showDeleteModal = (record: TaskInter) => {
@@ -133,15 +133,7 @@ const TableTasks = () => {
         dataSource={tasks}
         rowKey={(task: TaskInter) => task._id}
         pagination={paginationConfig}
-        locale={{
-          emptyText: loadingTasks ? (
-            <Spin />
-          ) : (
-            <span className="no__data__tasks">
-              No Data Add Tasks To Start See Them!
-            </span>
-          ),
-        }}
+        loading={loadingTasks}
       />
       <DeleteModal
         isModalVisible={isModalVisible}

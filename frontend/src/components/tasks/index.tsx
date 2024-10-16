@@ -11,6 +11,7 @@ const Todo = () => {
     (state) => state.user.user?.name
   ) as string;
   const dispatch = useDispatch<AppDispatch>();
+
   return (
     <div className="tasks__container">
       <span className="welcome__todo">

@@ -11,6 +11,15 @@ class FullTextTask implements __Router {
   constructor() {
     this.initializeRoutes();
   }
+  private checkStatus(value: string) {
+    const allowedStatuses = ["not-started", "in-progress", "done", "all"];
+    if (!allowedStatuses.includes(value)) {
+      throw new Error(
+        "Status for filter must be one of the following: not-started, in-progress, done, all"
+      );
+    }
+    return true;
+  }
   private checkPage(value: any) {
     if (typeof value !== "number") {
       throw new Error("Page must be valid number.");
@@ -28,6 +37,12 @@ class FullTextTask implements __Router {
           .bail()
           .isLength({ min: 1 })
           .withMessage("content must be at least 1 chars long"),
+        body("status")
+          .optional()
+          .isString()
+          .withMessage("status must be string")
+          .bail()
+          .custom(this.checkStatus),
         body("page")
           .exists()
           .withMessage("page must exist")

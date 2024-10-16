@@ -19,6 +19,7 @@ class TaskController {
       res.status(201).send({
         status: true,
         task: user.tasks[user.tasks.length - 1],
+        tasks: user.tasks.slice(5),
         arrSize: user.tasks.length,
       });
     } catch (error: any) {
@@ -151,15 +152,28 @@ class TaskController {
   public async full_text_search(req: currRequest, res: Response) {
     try {
       const { id } = req.currentUser!;
-      const { content, page } = req.body;
+      const { content, page, status } = req.body;
       const user = await User.findById(id);
       if (!user) {
         throw new NotFound("Can not find the user!");
       }
       if (!content) {
-        const arrSize = user.tasks.length;
-        const tasks = paginateArray(user.tasks, page);
-        res.status(200).send({ status: true, tasks, arrSize });
+        if (status === "all" || !status) {
+          const arrSize = user.tasks.length;
+          const tasks = paginateArray(user.tasks, page);
+          res.status(200).send({ status: true, tasks, arrSize });
+        } else {
+          const tasks = user.tasks.filter((task) => {
+            if (task.status === status) {
+              return task;
+            }
+          });
+          const arrSize = tasks.length;
+          const paginatedTasks = paginateArray(tasks, page);
+          res
+            .status(200)
+            .send({ status: true, tasks: paginatedTasks, arrSize });
+        }
       } else {
         const pipeline = [
           {
@@ -201,9 +215,27 @@ class TaskController {
         if (result.length > 0) {
           tasksReturned = result[0].tasks;
         }
-        const arrSize = tasksReturned.length;
-        const tasks = paginateArray(tasksReturned, page);
-        res.send({ status: true, tasks, arrSize });
+        if (
+          status &&
+          (status === "done" ||
+            status === "in-progress" ||
+            status === "not-started")
+        ) {
+          tasksReturned = tasksReturned.filter((task) => {
+            if (task.status === status) {
+              return task;
+            }
+          });
+          const arrSize = tasksReturned.length;
+          const tasks = paginateArray(tasksReturned, page);
+
+          res.send({ status: true, tasks, arrSize });
+        }
+        if (!status || status === "all") {
+          const arrSize = tasksReturned.length;
+          const tasks = paginateArray(tasksReturned, page);
+          res.send({ status: true, tasks, arrSize });
+        }
       }
     } catch (error: any) {
       throw new BadReqErr(error.message);

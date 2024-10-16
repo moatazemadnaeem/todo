@@ -6,6 +6,7 @@ const initialState: InitialTasksState = {
   loading: false,
   page: 1,
   arrSize: 0,
+  triggerActionUser: false,
 };
 const taskSlice = createSlice({
   name: "task",
@@ -21,22 +22,8 @@ const taskSlice = createSlice({
     addSizeArr: (state, action: PayloadAction<number>) => {
       state.arrSize = action.payload;
     },
-    addTask: (state, action: PayloadAction<TaskInter>) => {
-      if (state.list.length >= 5) {
-        state.list.length = 0;
-        state.list.push(action.payload);
-        state.page += 1;
-      } else {
-        state.list.push(action.payload);
-      }
-    },
-    deleteTask: (state, action: PayloadAction<string>) => {
-      if (state.list.length === 1) {
-        state.list = state.list.filter((task) => task._id !== action.payload);
-        state.page -= 1;
-      } else {
-        state.list = state.list.filter((task) => task._id !== action.payload);
-      }
+    addTasks: (state, action: PayloadAction<TaskInter>) => {
+      state.list.push(action.payload);
     },
     setPageTask: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
@@ -49,16 +36,19 @@ const taskSlice = createSlice({
         }
       });
     },
+    triggerAction: (state) => {
+      state.triggerActionUser = !state.triggerActionUser;
+    },
   },
 });
 
 export default taskSlice.reducer;
 export const {
-  addTask,
+  addTasks,
   getAllTasks,
   editTask,
-  deleteTask,
   setPageTask,
   addSizeArr,
   setLoadingTasks,
+  triggerAction,
 } = taskSlice.actions;

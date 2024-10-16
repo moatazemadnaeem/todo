@@ -7,7 +7,9 @@ import {
 } from "../types/tasks.types";
 
 export const searchTasks = async (
-  requestBody: { content?: string; page: number } = { page: 1 }
+  requestBody: { content?: string; page: number; status?: string } = {
+    page: 1,
+  }
 ) => {
   try {
     const { data } = await AxiosInstance.post<GetTasksInter>(
@@ -16,7 +18,6 @@ export const searchTasks = async (
         ...requestBody,
       }
     );
-
     return { tasks: data.tasks, arrSize: data.arrSize };
   } catch (error: any) {
     throw (
@@ -68,7 +69,7 @@ export const createTasks = async (requestBody: { content: string }) => {
       ...requestBody,
     });
 
-    return { task: data.task, arrSize: data.arrSize };
+    return { task: data.task, arrSize: data.arrSize, tasks: data.tasks };
   } catch (error: any) {
     throw (
       error?.response?.data[0]?.msg || "Something went wrong please try again."

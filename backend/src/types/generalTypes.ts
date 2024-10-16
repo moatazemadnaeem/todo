@@ -10,3 +10,9 @@ export interface text {
   path: string;
   texts: [{ value: string; hit: string }];
 }
+export enum StatusEnum {
+  NOT_STARTED = "not-started",
+  IN_PROGRESS = "in-progress",
+  DONE = "done",
+  ALL = "all",
+}

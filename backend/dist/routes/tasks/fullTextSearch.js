@@ -11,6 +11,13 @@ class FullTextTask {
         this.router = (0, express_1.Router)();
         this.initializeRoutes();
     }
+    checkStatus(value) {
+        const allowedStatuses = ["not-started", "in-progress", "done", "all"];
+        if (!allowedStatuses.includes(value)) {
+            throw new Error("Status for filter must be one of the following: not-started, in-progress, done, all");
+        }
+        return true;
+    }
     checkPage(value) {
         if (typeof value !== "number") {
             throw new Error("Page must be valid number.");
@@ -26,6 +33,12 @@ class FullTextTask {
                 .bail()
                 .isLength({ min: 1 })
                 .withMessage("content must be at least 1 chars long"),
+            (0, express_validator_1.body)("status")
+                .optional()
+                .isString()
+                .withMessage("status must be string")
+                .bail()
+                .custom(this.checkStatus),
             (0, express_validator_1.body)("page")
                 .exists()
                 .withMessage("page must exist")

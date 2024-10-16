@@ -13,6 +13,7 @@ export interface InitialTasksState {
   loading: boolean;
   page: number;
   arrSize: number;
+  triggerActionUser: boolean;
   error?: string;
 }
 export interface IsEditTaskInter extends TaskInter {
@@ -41,5 +42,6 @@ export interface EditTasksArg {
 export interface CreateTask {
   status: boolean;
   task: TaskInter;
+  tasks: TaskInter[];
   arrSize: number;
 }

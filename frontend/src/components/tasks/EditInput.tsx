@@ -1,12 +1,12 @@
 import { Form, Input, Select, message } from "antd";
 import { useDispatch } from "react-redux";
-import { editTask } from "../../store/features/tasks/createTaskSlice";
 import "./tasks.styles.css";
 import { AppDispatch } from "../../store";
 import { IsEditTaskInter, StatusEnum } from "../../types/tasks.types";
 import { useEffect } from "react";
 import { EditTaskValues } from "../../types/tasks.types";
 import { editTasksApi } from "../../api/tasks";
+import { RootState } from "../../store";
 const { Option } = Select;
 const EditInput = ({
   content,
@@ -20,13 +20,6 @@ const EditInput = ({
   const onFinish = async (values: EditTaskValues, ic_flag: boolean) => {
     try {
       if (ic_flag && "edit_icon" in values) {
-        dispatch(
-          editTask({
-            content: content,
-            _id,
-            status: values.edit_icon as StatusEnum,
-          })
-        );
         await editTasksApi(
           {
             content: content,
@@ -37,7 +30,6 @@ const EditInput = ({
         );
       }
       if (!ic_flag && "edit_content" in values) {
-        dispatch(editTask({ content: values.edit_content, _id, status }));
         await editTasksApi(
           {
             content: values.edit_content,
@@ -58,7 +50,7 @@ const EditInput = ({
     form.setFieldsValue({ edit_icon: status });
   }, []);
   const handleSelectChange = () => {
-    form.submit(); // Trigger form submission
+    form.submit();
   };
   return ic_flag === true ? (
     <Form
@@ -71,13 +63,9 @@ const EditInput = ({
           placeholder="Select a option and change input text above"
           onChange={handleSelectChange}
         >
-          <Option value={StatusEnum.NOT_STARTED}>
-            {StatusEnum.NOT_STARTED}
-          </Option>
-          <Option value={StatusEnum.IN_PROGRESS}>
-            {StatusEnum.IN_PROGRESS}
-          </Option>
-          <Option value={StatusEnum.DONE}>{StatusEnum.DONE}</Option>
+          <Option value={StatusEnum.NOT_STARTED}>{"Not Started"}</Option>
+          <Option value={StatusEnum.IN_PROGRESS}>{"Pending"}</Option>
+          <Option value={StatusEnum.DONE}>{"Done"}</Option>
         </Select>
       </Form.Item>
     </Form>
