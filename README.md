@@ -27,17 +27,17 @@ pages that handle authentication are :
 
 ### Sign up
 
-![image.png](todo_readme_imgs/image.png)
+![image.png](/frontend/todo_readme_imgs/image.png)
 
 In the above image we will see there are 3 integral parts of our sign up page and they are name, email, password[.](http://password.In) once filling all of the inputs and press sign up button it will directs you to the sign in page for now i did not used email confirmation to make the process easy if something goes wrong this will raise an error message lets see it:
 
-![image.png](todo_readme_imgs/image%201.png)
+![image.png](/frontend/todo_readme_imgs/image%201.png)
 
 This error message indicates that i entered email that already exist on the DB.
 
 ### Sign In
 
-![image.png](todo_readme_imgs/image%202.png)
+![image.png](/frontend/todo_readme_imgs/image%202.png)
 
 In the sign in page now you can start enter the email and password that you just created on the sign up and as you guessed it raise an error if something goes wrong on the server.
 
@@ -351,7 +351,7 @@ Pages thats handle tasks are one page I decided to put all the design in place t
 
 lets see what the tasks page looks like i already have tasks on my account but with your account the tasks does not exist so start add new ones.
 
-![image.png](todo_readme_imgs/image%203.png)
+![image.png](/frontend/todo_readme_imgs/image%203.png)
 
 In the above image we have Boxes the corresponds to every feature for our tasks page lets discuss them in great detail:
 
@@ -370,24 +370,24 @@ In this box i displayed a welcome text to the signed in user.
 
 This box is special because you can enter a text and it will display an auto complete for you for example if start typing `pl` it will show you all the tasks that start with `pl`:
 
-![image.png](todo_readme_imgs/image%204.png)
+![image.png](/frontend/todo_readme_imgs/image%204.png)
 
 And if you clicked `play football` it will give you all the tasks that have football as content:
 
-![image.png](todo_readme_imgs/image%205.png)
+![image.png](/frontend/todo_readme_imgs/image%205.png)
 
 Another feature which is filter by status:
 
-![image.png](todo_readme_imgs/image%206.png)
+![image.png](/frontend/todo_readme_imgs/image%206.png)
 
 If you want for example get all tasks that have `done` status you can just click `done` and magic will happen see this image:
 
-![image.png](todo_readme_imgs/image%207.png)
+![image.png](/frontend/todo_readme_imgs/image%207.png)
 
 You can also combine text with filter meaning you can get all tasks that have play football
 and also have done as status:
 
-![image.png](todo_readme_imgs/image%208.png)
+![image.png](/frontend/todo_readme_imgs/image%208.png)
 
 ### Blue Box
 
@@ -403,13 +403,13 @@ We have four parts on this section
   The status of the task either `not started` , `pending` or `done`.
 - Edit
   Its a button to edit the task if you press it this will open two inputs for tasks and status lets an Image:
-  ![image.png](todo_readme_imgs/image%209.png)
+  ![image.png](/frontend/todo_readme_imgs/image%209.png)
 
       You can change the content for example change it to be play football with friends or change the status of it.
 
 - Delete
   If you pressed this button this will raise a popup thats tells you if you wants to delete the task or not lets see an image:
-  ![image.png](todo_readme_imgs/image%2010.png)
+  ![image.png](/frontend/todo_readme_imgs/image%2010.png)
 
 ### Purple Box
 
