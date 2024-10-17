@@ -12,7 +12,6 @@ import UpdateContentTask from "./routes/tasks/updateContentTask";
 import DeleteTask from "./routes/tasks/deleteTask";
 import AutoCompleteTask from "./routes/tasks/autoCompleteTask";
 import FullTextTask from "./routes/tasks/fullTextSearch";
-import StatusFilterTask from "./routes/tasks/statusFilterTask";
 new App(
   [
     //Users
@@ -26,7 +25,6 @@ new App(
     new DeleteTask(),
     new AutoCompleteTask(),
     new FullTextTask(),
-    new StatusFilterTask(),
   ],
   parseInt(process.env.PORT!)
 );

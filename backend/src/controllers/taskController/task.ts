@@ -241,24 +241,5 @@ class TaskController {
       throw new BadReqErr(error.message);
     }
   }
-  public async tasks_by_status(req: currRequest, res: Response) {
-    try {
-      const { id } = req.currentUser!;
-      const { status } = req.body;
-      const user = await User.findById(id);
-
-      if (!user) {
-        throw new NotFound("Can not find the user!");
-      }
-      const tasks = user.tasks.filter((task) => {
-        if (task.status === status) {
-          return task;
-        }
-      });
-      res.send({ status: true, tasks });
-    } catch (error: any) {
-      throw new BadReqErr(error.message);
-    }
-  }
 }
 export const taskController = new TaskController();
